@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+# 1 Set Project
+-`npx create-react-app <project-name>`
+-`cd <project-name>`
+-`npm start` or npm run start or npx react-scripts start
+-auto open browser localhost:3000
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 2 About project
+-other code / Dependencies อยู่ใน node_modules
+    - ลบทิ้งได้
+    - ติดตั้งใหม่ด้วย npm install จะทำการติดตั้ง Dependencies ที่อยู่ใน package.json ให้อัตโนมัติ
+    
+- My dev_code will be in src/
 
-## Available Scripts
+# 4 : Clean up Project - remove unnecessary thing
+clean up index.js
+clean up App.js, App.css
+clean up public/index.html
+remove unnecessary file
+restructure folder to app/ component/
 
-In the project directory, you can run:
+# 3 : CSS setup
+#### 3.1 : ติดตั้ง scss
 
-### `npm start`
+ติดตั้ง sass เพื่อช่วยให้การเขียน CSS แบบ BEM สะดวกมากขึ้น
+รันคำสั่ง npm install sass ลงใน terminal (อย่าลืม check path ว่าอยู่ที่ root project แล้ว : ตำแหน่งที่มี file package.json)
+ตรวจสอบ dependencies ในไฟล์ package.json ว่ามี sass แล้ว
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### 3.2 : setup index.scss
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+ไฟล์ index.css : ให้แปลงนามสกุลไฟล์ เป็น index.scss
+ไฟล์ index.js : เปลี่ยนการ import จาก index.css เป็น index.scss
 
-### `npm test`
+#### 3.3 : CSS Global Reset
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ไฟล์ index.scss : เขียน css rule เพื่อลบ default padding,margin ต่างๆ รวมถึงวิธีการวัดขนาดของ Box-model
 
-### `npm run build`
+#### 3.4 : Typography
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+ไฟล์ index.scss : ให้ทำการ import google font
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&family=Source+Sans+Pro:wght@400;600;700&display=swap');
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+ไฟล์ index.scss : ทำการเพิ่ม font หลักของ application (Nunito) ลงใน tag body
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+body {
+    font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+        'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### 3.5 : Color
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+knowledge : scss มีความสามารถในการสร้างตัวแปรไว้ใช้ได้
+ไฟล์ index.scss : สร้างตัวแปรสำหรับเก็บสีหลักๆของ web-application
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+$primary: #db4c3f;
+$grey-light: #eaeaea;
+$grey-dark: #808080;
+$white: #fff;
