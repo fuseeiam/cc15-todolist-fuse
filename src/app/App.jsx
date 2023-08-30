@@ -4,6 +4,9 @@ import { FaHome, FaInbox, FaCalendar, FaCalendarAlt, FaChevronDown } from 'react
 import Header from '../components/Header';
 import ListItem from '../components/ListItem';
 import Lists from '../components/Lists';
+import TodoHeader from '../components/Todo/TodoHeader';
+import TodoCreate from '../components/Todo/TodoCreate';
+import TodoLists from '../components/Todo/TodoLists';
 
 function App() {
   // <ListItem text='Inbox' icon={<FaInbox />} active={true} />
@@ -29,6 +32,7 @@ function App() {
           <section className='sidebar__category'>
             <Lists data={generalLists} />
           </section>
+
           <section className='sidebar__category'>
             <div className='accordion'>
               {/* Toggle */}
@@ -38,14 +42,21 @@ function App() {
                   <p className='accordion__item__text'>Projects</p>
                 </li>
               </div>
-
-              {/* Lists */}
               <Lists data={projectLists} />
             </div>
           </section>
         </aside>
       </div>
-      <div className='todo__content'>TodoContent</div>
+      <div className='todo__content'>
+        <main className='todo__container'>
+          <TodoHeader />
+
+          <TodoCreate />
+          <TodoLists />
+
+          {/* TodoLists */}
+        </main>
+      </div>
     </div>
   );
 }
@@ -53,29 +64,25 @@ function App() {
 export default App;
 
 /* 
- <ul className='list'>
-  // #1
-                 {projectLists.map((obj) => (
-                  <ListItem key={obj.id} text={obj.text} icon={obj.icon} active={obj.active} />
-                ))} 
-
-                // #2
-                {projectLists.map((obj) => {
-                  obj.key = obj.id;
-                  delete obj.id;
-                  return <ListItem {...obj} />;
-                })}
-</ul>
+Challenge-1 : Refactor ให้ 2 section render UI ที่...
+  - OptionA (2/5) : render UI ต่างกัน <Lists/> กับ <Accordion /> 
+  - OptionB (4/5) : render UI เดียวกัน เช่น <Lists />
+  - OptionC (5/5) : render UI <Lists/> ภายใต้ <Accordion> <Lists/> </Accordion> 
+  // ใช้ props.children
 */
 
+/* 
+ <ul className='list'>
+  // #1
+    {projectLists.map((obj) => (
+      <ListItem key={obj.id} text={obj.text} icon={obj.icon} active={obj.active} />
+    ))} 
 
-/* Challenge : Refactor 
-- ให้ 2 section render UI ที่...
-     - Option A (2/5) : render ต่างกัน <Lists/> กับ <Accordion/>
-     - Option B (4/5) : render UI เดียวกัน เช่น <Lists/>
-     - Option B (5/5) : render UI <Lists/> ภายใต้  <Accordion> <Lists/> </Accordion>
-     // ใช้ props.children
-     
-     */
-/* <ul className = 'List'>
+    // #2
+    {projectLists.map((obj) => {
+      obj.key = obj.id;
+      delete obj.id;
+      return <ListItem {...obj} />;
+    })}
+</ul>
 */
