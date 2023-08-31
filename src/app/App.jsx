@@ -50,11 +50,8 @@ function App() {
       <div className='todo__content'>
         <main className='todo__container'>
           <TodoHeader />
-
           <TodoCreate />
           <TodoLists />
-
-          {/* TodoLists */}
         </main>
       </div>
     </div>
