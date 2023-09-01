@@ -66,8 +66,8 @@ function TodoCreate(props) {
         <TodoForm
           textSubmit='Add Task'
           setIsOpenForm={setIsOpenForm}
-          data={props.data}
-          setTodo={props.setTodo}
+          // data={props.data}
+          // setTodo={props.setTodo}
           addTodo={props.addTodo}
         />
       ) : (

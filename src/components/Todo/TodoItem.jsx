@@ -9,7 +9,7 @@ import styles from './TodoItem.module.scss';
 // Object Destructuring (Props)
 // const { task, done, date } = props;
 
-function TodoItem({ id, task, done, date, deleteTodo }) {
+function TodoItem({ id, task, done, date, deleteTodo, editTodo }) {
     const [isOpenForm, setIsOpenForm] = useState(false);
     console.log(id);
 
@@ -23,13 +23,16 @@ function TodoItem({ id, task, done, date, deleteTodo }) {
 
     const toggleStatus = () => {
         const newTodoObj = { id, task, date, status: !done };
-        console.log(newTodoObj);
+        editTodo(id, newTodoObj);
         //props.editTodo(id,newTodoObj)
     }
     return (
         <>
             {isOpenForm ? (
-                <TodoForm textSubmit='Edit Task' setIsOpenForm={setIsOpenForm} />
+                <TodoForm textSubmit='Edit Task'
+                    setIsOpenForm={setIsOpenForm}
+                    editTodo={editTodo}
+                    oldTodo={{ id, task, done, due_date }} />
             ) : (
                 <li className={styles.todo}>
                     <div className={`${styles.todo__checkbox}  ${done ? styles.todo__checkbox__done : ''}`}>

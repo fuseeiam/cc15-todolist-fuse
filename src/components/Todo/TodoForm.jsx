@@ -25,7 +25,7 @@ props = {
 */
 function TodoForm(props) {
   const [isError, setIsError] = useState(false);
-  const [taskInput, setTaskInput] = useState('');
+  const [taskInput, setTaskInput] = useState(props.oldTodo?.task || '');
 
   const handleChangeInput = function (event) {
     if (isError) setIsError(false);
@@ -41,6 +41,11 @@ function TodoForm(props) {
       setIsError(true);
       return;
     }
+    if (props.addTodo) props.addTodo(taskInput);
+    else if (props.editTodo && props.oldTodo) {
+      props.editTodo(props.oldTodo.id, { task: taskInput });
+    }
+
     const newTodo = {
       id: nanoid(),
       task: taskInput,
