@@ -27,7 +27,8 @@ const data = [
     due_date: '2023-04-30',
   },
 ];
-function TodoLists() {
+
+function TodoLists(props) {
   // CRUD = Create-Read-Update-Delete
   const [allTodos, setAllTodos] = useState(data);
 
@@ -41,12 +42,15 @@ function TodoLists() {
   // RenderList #2
   return (
     <ul className={styles.todo__lists}>
-      {allTodos.map((todoObj) => (
+      {props.data.map((todoObj) => (
         <TodoItem
-          key={todoObj.id}
+          key={todoObj.id} // id: 1,2,3
+          id={todoObj.id}
           task={todoObj.task}
           done={todoObj.status}
           date={todoObj.due_date}
+          deleteTodo={props.deleteTodo}
+          editTodo={props.editTodo}
         />
       ))}
     </ul>
